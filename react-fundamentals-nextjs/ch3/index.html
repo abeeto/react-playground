@@ -1,0 +1,22 @@
+<!-- vanilla w/o react -->
+<html>
+  <body>
+    <div id = 'app'></div>
+    <script type = 'text/javascript'>
+        //this part is all in JS.
+        
+        // first grab the div with id of 'app', from here we can add new elements
+        const app = document.getElementById('app');
+
+        const header = document.createElement('h1');
+
+        // we are making a node that we then append to the header(h1 tag) as a child.
+        const text = 'develop. preview. ship.';
+        const headerContent = document.createTextNode(text);
+
+        header.appendChild(headerContent);
+
+        app.appendChild(header);
+    </script>
+  </body>
+</html>
