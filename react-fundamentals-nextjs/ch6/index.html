@@ -10,11 +10,24 @@
           function Header(props) {
               return(<h1>{props.text}</h1>)
           }
-          
+          //destructuring: used in components, instead of passing object as seen in Header. We can destructure/break down the object w/o dot notation
+          //by using {}
+          function Paragraph({text}){
+            return(<p>{text}</p>)
+          }
           function HomePage(){
+              const namesToRun = ['Abhinav', 'Sajeed', 'Zain', 'Avi']
               return(<div>
                   <Header text = 'Develop.'/>
                   <Header text = 'Fast.' />
+                  <Paragraph text = "She said do you love me, I told her only partly. My momma is a savage, I'm sorry" />
+                    <ul>
+                    {namesToRun.map((value) => 
+                        {
+                        return (<li key={value}> {value}</li>)
+                        })
+                    }
+                    </ul>
               </div>);
           }
           const root = ReactDOM.createRoot(app);
