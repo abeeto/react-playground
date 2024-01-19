@@ -1,37 +1,43 @@
 <html>
-    <body>
-      <div id="app"></div>
-      <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-      <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-      <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-      <script type="text/jsx">
-          const app = document.getElementById("app")
-     
-          function Header(props) {
-              return(<h1>{props.text}</h1>)
-          }
-          //destructuring: used in components, instead of passing object as seen in Header. We can destructure/break down the object w/o dot notation
-          //by using {}
-          function Paragraph({text}){
-            return(<p>{text}</p>)
-          }
-          function HomePage(){
-              const namesToRun = ['Abhinav', 'Sajeed', 'Zain', 'Avi']
-              return(<div>
-                  <Header text = 'Develop.'/>
-                  <Header text = 'Fast.' />
-                  <Paragraph text = "She said do you love me, I told her only partly. My momma is a savage, I'm sorry" />
-                    <ul>
-                    {namesToRun.map((value) => 
-                        {
-                        return (<li key={value}> {value}</li>)
-                        })
-                    }
-                    </ul>
-              </div>);
-          }
-          const root = ReactDOM.createRoot(app);
-          root.render(<HomePage/>);
-      </script>
-    </body>
-  </html>
+  <body>
+    <div id="app"></div>
+ 
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+ 
+    <script type="text/jsx">
+      const app = document.getElementById("app")
+ 
+      function Header({ text }) {
+        return <h1>{text ? text : "Default title"}</h1>
+      }
+ 
+      function HomePage() {
+        const names = ["Ada Lovelace", "Grace Hopper", "Margaret Hamilton"]
+ 
+        const [likes, setLikes] = React.useState(0)
+ 
+        function handleClick() {
+          setLikes(likes + 1)
+        }
+ 
+        return (
+          <div>
+            <Header title="Develop. Preview. Ship." />
+            <ul>
+              {names.map((name) => (
+                <li key={name}>{name}</li>
+              ))}
+            </ul>
+ 
+            <button onClick={handleClick}>Like ({likes})</button>
+          </div>
+        )
+      }
+ 
+      const root = ReactDOM.createRoot(app);
+      root.render(<HomePage />);
+    </script>
+  </body>
+</html>
